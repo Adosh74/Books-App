@@ -1,11 +1,11 @@
 import { Router } from 'express';
 
-import * as controllers from './../controllers/store.controller.js';
+import * as controllers from '../../controllers/store.controller.js';
 
 const router = Router();
 
 router
-  .route('/api/v1/sore')
+  .route('/')
   .get(controllers.getStoreList)
   .post(controllers.addStore);
 

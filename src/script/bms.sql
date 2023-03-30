@@ -9,7 +9,7 @@ CREATE TABLE books (
   book_publisher varchar(50) not null,
   book_pages int not null,
   store_code varchar(5) not null,
-  created_on timestamp not null,
+  created_on timestamp DEFAULT NOW() not null,
   created_by varchar(50) not null
 );
 
@@ -18,6 +18,20 @@ CREATE TABLE store (
   store_name varchar(50) not null,
   store_code varchar(5) not null,
   store_address varchar(50) not null,
-  created_on timestamp not null,
+  created_on timestamp DEFAULT NOW() not null,
   created_by varchar(50) not null
 );
+
+INSERT INTO
+  BOOkS (
+    book_title,
+    book_description,
+    book_author,
+    book_isbn,
+    book_publisher,
+    book_pages,
+    store_code,
+    created_by
+  )
+VALUES
+  ($ 1, $ 2, $ 3, $ 4, $ 5, $ 6, $ 7, $ 8);

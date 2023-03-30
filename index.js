@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import router from './src/routes/store.route.js';
+import router from './src/routes/index.js';
 import db from './src/database/pool.js';
 
 //* test database*/
