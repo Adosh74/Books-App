@@ -1,4 +1,5 @@
 import db from './../database/pool.js';
+import randomCode from '../utilities/randomString.js';
 
 export const getStoreList = async (_req, res) => {
   try {
@@ -26,7 +27,7 @@ export const addStore = async (req, res) => {
     const connection = await db.connect();
 
     const storeName = req.body.store_name;
-    const storeCode = req.body.store_code;
+    const storeCode = randomCode();
     const storeAddress = req.body.store_address;
     const createdBy = req.body.created_by;
 

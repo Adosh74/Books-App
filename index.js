@@ -26,7 +26,8 @@ app.use(cors());
 // bodyParser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// add note route
+
+///* APIs endpoint *////
 app.use(router);
 
 app.get('/', (_req, res) => {
