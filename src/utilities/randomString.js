@@ -8,6 +8,6 @@ const randomCode = () => {
   });
 };
 
-console.log(randomCode());
+// console.log(randomCode());
 
 export default randomCode;

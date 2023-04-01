@@ -1,6 +1,6 @@
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 
-dotenv.config()
+dotenv.config();
 
 const {
   NODE_ENV,
@@ -10,7 +10,8 @@ const {
   POSTGRES_DB_TEST,
   POSTGRES_USER,
   POSTGRES_PASSWORD,
-} = process.env
+  LOG_FILE_PATH,
+} = process.env;
 
 export default {
   host: POSTGRES_HOST,
@@ -18,4 +19,5 @@ export default {
   database: NODE_ENV === 'dev' ? POSTGRES_DB : POSTGRES_DB_TEST,
   user: POSTGRES_USER,
   password: POSTGRES_PASSWORD,
-}
+  log_file_path: LOG_FILE_PATH,
+};

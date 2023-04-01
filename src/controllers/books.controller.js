@@ -1,4 +1,7 @@
 import db from './../database/pool.js';
+import LoggerService from '../services/logger.service.js';
+
+const loggerService = new LoggerService('book.controller');
 
 // +[1]
 export const getBooks = async (_req, res) => {
@@ -11,7 +14,7 @@ export const getBooks = async (_req, res) => {
     const connection = await db.connect();
 
     const result = await connection.query(sql);
-
+    loggerService.info('return book list');
     return res.status(200).json({
       message: 'books list get successfully',
       data: result.rows,
