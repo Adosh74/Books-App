@@ -86,6 +86,16 @@ export const createBook = async (req, res) => {
 
     const result = await connection.query(sql, values);
 
+    loggerService.info('Add new book', result.rows);
+
+    auditService.prepareAudit(
+      auditAction.ADD_BOOK,
+      result.rows,
+      null,
+      'thunder client'
+    );
+
+    connection.release();
     res.status(201).json({
       message: 'book data saved successfully',
       data: result.rows,
