@@ -22,6 +22,15 @@ CREATE TABLE store (
   created_by varchar(50) not null
 );
 
+CREATE TABLE app_audit (
+  audit_id SERIAL PRIMARY KEY,
+  audit_date json,
+  audit_by varchar(50) not null,
+  audit_on timestamp DEFAULT NOW() not null,
+  audit_status varchar(50),
+  audit_error json
+);
+
 INSERT INTO
   BOOkS (
     book_title,
@@ -35,3 +44,14 @@ INSERT INTO
   )
 VALUES
   ($ 1, $ 2, $ 3, $ 4, $ 5, $ 6, $ 7, $ 8);
+
+INSERT INTO
+  app_audit (
+    audit_action,
+    audit_data,
+    audit_status,
+    audit_error,
+    audit_by
+  )
+VALUES
+  ($ 1, $ 2, $ 3, $ 4, $ 5) RETURNING *;

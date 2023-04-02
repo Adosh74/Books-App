@@ -1,5 +1,7 @@
 import db from './../database/pool.js';
 import LoggerService from '../services/logger.service.js';
+import * as auditService from '../audit/audit.service.js';
+import auditAction from '../audit/auditAction.js';
 
 const loggerService = new LoggerService('book.controller');
 
@@ -14,7 +16,16 @@ export const getBooks = async (_req, res) => {
     const connection = await db.connect();
 
     const result = await connection.query(sql);
-    loggerService.info('return book list');
+
+    loggerService.info('return book list', result.rows);
+
+    auditService.prepareAudit(
+      auditAction.GET_BOOK_LIST,
+      result.rows,
+      null,
+      'thunder client'
+    );
+
     return res.status(200).json({
       message: 'books list get successfully',
       data: result.rows,
