@@ -24,6 +24,7 @@ CREATE TABLE store (
 
 CREATE TABLE app_audit (
   audit_id SERIAL PRIMARY KEY,
+  audit_action varchar(50) not null,
   audit_date json,
   audit_by varchar(50) not null,
   audit_on timestamp DEFAULT NOW() not null,
